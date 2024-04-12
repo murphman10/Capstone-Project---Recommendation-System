@@ -1,10 +1,12 @@
-package com.coursera.starterprogram;
+package com.coursera.starterprogram.rater;
 /**
  * Write a description of class Rater here.
  * 
  * @author (your name) 
  * @version (a version number or a date)
  */
+
+import com.coursera.starterprogram.rating.Rating;
 
 import java.util.*;
 

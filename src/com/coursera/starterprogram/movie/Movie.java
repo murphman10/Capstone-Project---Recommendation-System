@@ -1,4 +1,4 @@
-package com.coursera.starterprogram;
+package com.coursera.starterprogram.movie;
 
 import java.util.ArrayList;
 import java.util.Arrays;

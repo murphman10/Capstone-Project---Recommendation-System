@@ -10,9 +10,17 @@ public class FirstRatings {
 
     public ArrayList<Movie> loadMovies(String filename) {
         ArrayList<Movie> movies = new ArrayList<>();
-        FileResource fileResource = new FileResource("ratedmovies_short.csv");
+        FileResource fileResource = new FileResource(filename);
         CSVParser parser = fileResource.getCSVParser();
-        // each line
+        for(CSVRecord record : parser) {
+
+            Movie movie = new Movie(record.get("id"), record.get("title"), record.get("year"), record.get("genre"),
+                                    record.get("director"), record.get("country"), record.get("poster"),
+                                    Integer.parseInt(record.get("minutes")));
+
+            movies.add(movie);
+        }
+
         return movies;
     }
 

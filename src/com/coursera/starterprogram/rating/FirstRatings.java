@@ -29,8 +29,23 @@ public class FirstRatings {
         ArrayList<Rater> raters = new ArrayList<>();
         FileResource fileResource = new FileResource(filename);
         CSVParser parser = fileResource.getCSVParser();
+        int index = 0;
         for(CSVRecord record : parser) {
-
+            if(index == 0) {
+                Rater rater = new Rater(record.get("rater_id"));
+                rater.addRating(record.get("movie_id"), Double.parseDouble(record.get("rating")));
+                raters.add(rater);
+                index++;
+            }
+            else if(raters.get(index -1).getID().equals(record.get("rater_id"))) {
+                raters.get(index - 1).addRating(record.get("movie_id"), Double.parseDouble(record.get("rating")));
+            }
+            else {
+                Rater rater = new Rater(record.get("rater_id"));
+                rater.addRating(record.get("movie_id"), Double.parseDouble(record.get("rating")));
+                raters.add(rater);
+                index++;
+            }
         }
 
         return raters;

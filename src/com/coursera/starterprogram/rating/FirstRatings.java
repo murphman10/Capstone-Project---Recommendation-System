@@ -1,6 +1,7 @@
 package com.coursera.starterprogram.rating;
 
 import com.coursera.starterprogram.movie.Movie;
+import com.coursera.starterprogram.rater.Rater;
 import edu.duke.*;
 
 import java.io.File;
@@ -22,6 +23,17 @@ public class FirstRatings {
         }
 
         return movies;
+    }
+
+    public ArrayList<Rater> loadRaters(String filename) {
+        ArrayList<Rater> raters = new ArrayList<>();
+        FileResource fileResource = new FileResource(filename);
+        CSVParser parser = fileResource.getCSVParser();
+        for(CSVRecord record : parser) {
+
+        }
+
+        return raters;
     }
 
 }

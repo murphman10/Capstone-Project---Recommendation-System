@@ -4,9 +4,7 @@ import com.coursera.starterprogram.rating.FirstRatings;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Map;
+import java.util.*;
 
 public class FirstRatingTest {
 
@@ -19,11 +17,11 @@ public class FirstRatingTest {
     @Test
     public void testLoadMovies() {
         ArrayList<Movie> result = firstRatings.loadMovies("data/ratedmoviesfull.csv");
-//        System.out.println("Number of movies: " + result.size());
-//        for(Movie m : result) {
-//            System.out.println(m.getID() + " " + m.getTitle() + " " + m.getYear() + " " + m.getGenres() + " " +
-//                               m.getDirector() + " " + m.getCountry() + " " + m.getPoster() + " " + m.getMinutes());
-//        }
+        System.out.println("Number of movies: " + result.size());
+        for(Movie m : result) {
+            System.out.println(m.getID() + " " + m.getTitle() + " " + m.getYear() + " " + m.getGenres() + " " +
+                               m.getDirector() + " " + m.getCountry() + " " + m.getPoster() + " " + m.getMinutes());
+        }
         int comediesCounter = 0;
         int moviesLongerThan150 = 0;
         for(Movie m : result) {
@@ -31,8 +29,8 @@ public class FirstRatingTest {
             if (m.getGenres().contains("Comedy")) comediesCounter++;
             if (m.getMinutes() > 150) moviesLongerThan150++;
         }
-//        System.out.println("Number of comedies: " + comediesCounter);
-//        System.out.println("Movies longer than 150 minutes: " + moviesLongerThan150);
+        System.out.println("Number of comedies: " + comediesCounter);
+        System.out.println("Movies longer than 150 minutes: " + moviesLongerThan150);
 
         Map<String, Integer> directorsToMovies = new HashMap<>();
         //load map
@@ -53,15 +51,50 @@ public class FirstRatingTest {
             }
 
         }
-//        for(Map.Entry entry : directorsToMovies.entrySet()) {
-//            System.out.println("Director: " + entry.getKey() + "," + " Movies Made: " + entry.getValue());
-//        }
+        for(Map.Entry entry : directorsToMovies.entrySet()) {
+            System.out.println("Director: " + entry.getKey() + "," + " Movies Made: " + entry.getValue());
+        }
     }
 
     @Test
     public void testLoadRaters() {
         ArrayList<Rater> result = firstRatings.loadRaters("data/ratings_short.csv");
+        String raterID = "2";
+        HashMap<String, Integer> map = new HashMap<String, Integer>();
+        String movieID = "1798709";
+        int raterCount = 0;
+        Set<String> set = new HashSet<String>();
+
         System.out.println("Number of ratings: " + result.size());
+
+        for(Rater r : result) {
+            System.out.println("ID: " + r.getID() + "," + "Ratings: " + r.numRatings());
+            ArrayList<String> ratingList = r.getItemsRated();
+            for(String s: ratingList) {
+                System.out.println("Movie ID " + s + " is rated as " + r.getRating(s));
+                if (!set.contains(s)) {
+                    set.add(s);
+                }
+
+            }
+            if(r.getID().equals(raterID))
+                System.out.println("Rater ID " + raterID + " has " + r.numRatings() + " ratings");
+
+            map.put(r.getID(), r.numRatings());
+
+            if(r.hasRating(movieID)) {
+                raterCount++;
+            }
+        }
+        int maxValue = Collections.max(map.values());
+        Iterator it = map.entrySet().iterator();
+        while (it.hasNext()) {
+            Map.Entry pair = (Map.Entry)it.next();
+            if(pair.getValue().equals(maxValue))
+                System.out.println("Rater ID " + pair.getKey() + " has the maximum number of ratings, which is " + maxValue);
+        }
+        System.out.println("Movie ID " + movieID + " was rated by " + raterCount + " raters");
+        System.out.println(set.size() + " movies have been rated by all " +  result.size() + " raters");
     }
 
 }

@@ -58,8 +58,8 @@ public class FirstRatingTest {
 
     @Test
     public void testLoadRaters() {
-        ArrayList<Rater> result = firstRatings.loadRaters("data/ratings_short.csv");
-        String raterID = "2";
+        ArrayList<Rater> result = firstRatings.loadRaters("data/ratings.csv");
+        String raterID = "193";
         HashMap<String, Integer> map = new HashMap<String, Integer>();
         String movieID = "1798709";
         int raterCount = 0;

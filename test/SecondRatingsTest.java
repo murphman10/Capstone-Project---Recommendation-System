@@ -18,4 +18,12 @@ public class SecondRatingsTest {
         System.out.println("Number of movies: " + movies);
         System.out.println("Number of raters: " + raters);
     }
+
+
+
+//    @Test
+//    void testGetAverageById() {
+//        double result = secondRatings.getAverageByID("0068646", 3);
+//        System.out.println(result);
+//    }
 }

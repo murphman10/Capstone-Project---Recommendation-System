@@ -31,6 +31,33 @@ public class SecondRatings {
         return myRaters.size();
     }
 
+    private double getAverageByID(String movieId, int minimalRaters) {
+        double result = 0.0;
+        int ratersCount = 0;
+
+        for(Rater r : myRaters) {
+            ArrayList<String> ratingList = r.getItemsRated();
+            for(String s : ratingList) {
+                if(movieId.equals(s)) {
+                    ratersCount++;
+                    result += r.getRating(s);
+                }
+            }
+
+        }
+        if(ratersCount < minimalRaters) {
+            return 0.0;
+        }
+        else if (minimalRaters == 0) {
+            return 0.0;
+        }
+        else {
+            result = result / ratersCount;
+            return result;
+        }
+
+    }
+
 
 
     

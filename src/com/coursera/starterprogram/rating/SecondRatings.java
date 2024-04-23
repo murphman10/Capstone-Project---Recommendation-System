@@ -59,23 +59,21 @@ public class SecondRatings {
     }
 
     public String getTitle(String id) {
-        String title = "Title Not Found";
         for(Movie m : myMovies) {
-            if(id.equals(m.getID())) {
-                title = m.getTitle();
+            if(m.getID().equals(id)) {
+                return m.getTitle();
             }
         }
-        return title;
+        return "TITLE NOT FOUND";
     }
 
     public String getID(String title) {
-        String id = "No Such Title";
         for(Movie m : myMovies) {
-            if(title.equals(m.getTitle())) {
-                id = m.getID();
+            if(m.getTitle().equals(title)) {
+                return m.getID();
             }
         }
-        return id;
+        return "NO SUCH TITLE";
     }
     
 }

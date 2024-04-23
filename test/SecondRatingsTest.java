@@ -1,3 +1,4 @@
+import com.coursera.starterprogram.rating.Rating;
 import com.coursera.starterprogram.rating.SecondRatings;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -19,11 +20,27 @@ public class SecondRatingsTest {
         System.out.println("Number of raters: " + raters);
     }
 
+    @Test
+    void testGetAverageRatings() {
+        ArrayList<Rating> ratings = secondRatings.getAverageRatings(3);
+        for(Rating r : ratings) {
+            System.out.println("Movie ID: " + r.getItem() + ", " + "Rating: " + r.getValue());
+        }
+    }
 
+    @Test
+    void testGetTitle() {
+        String resultCase1 = secondRatings.getTitle("0068646");
+        System.out.println(resultCase1);
+        String resultCase2 = secondRatings.getTitle("123");
+        System.out.println(resultCase2);
+    }
 
-//    @Test
-//    void testGetAverageById() {
-//        double result = secondRatings.getAverageByID("0068646", 3);
-//        System.out.println(result);
-//    }
+    @Test
+    void testGetID() {
+        String resultCase1 = secondRatings.getID("The Godfather");
+        System.out.println(resultCase1);
+        String resultCase2 = secondRatings.getID("Shark Tale");
+        System.out.println(resultCase2);
+    }
 }

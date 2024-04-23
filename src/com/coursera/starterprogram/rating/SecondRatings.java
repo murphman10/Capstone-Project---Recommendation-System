@@ -31,34 +31,51 @@ public class SecondRatings {
         return myRaters.size();
     }
 
-    private double getAverageByID(String movieId, int minimalRaters) {
-        double result = 0.0;
-        int ratersCount = 0;
-
-        for(Rater r : myRaters) {
-            ArrayList<String> ratingList = r.getItemsRated();
-            for(String s : ratingList) {
-                if(movieId.equals(s)) {
-                    ratersCount++;
-                    result += r.getRating(s);
-                }
+    private double getAverageByID(String id, int minimalRaters) {
+        double average = 0;
+        double sum = 0;
+        int countRaters = 0;
+        for(Rater r: myRaters) {
+            if(r.hasRating(id)) {
+                countRaters++;
+                sum += r.getRating(id);
             }
-
         }
-        if(ratersCount < minimalRaters) {
-            return 0.0;
-        }
-        else if (minimalRaters == 0) {
-            return 0.0;
-        }
-        else {
-            result = result / ratersCount;
-            return result;
-        }
-
+        if(countRaters >= minimalRaters)
+            average = sum / countRaters;
+        return average;
     }
 
+    public ArrayList<Rating> getAverageRatings(int minimalRaters) {
+        ArrayList<Rating> ratings = new ArrayList<Rating>();
+        for(Movie m: myMovies) {
+            double averageRating = getAverageByID(m.getID(),minimalRaters);
+            if(averageRating!=0){
+                Rating r = new Rating(m.getID(), averageRating);
+                ratings.add(r);
+            }
+        }
+        return ratings;
+    }
 
+    public String getTitle(String id) {
+        String title = "Title Not Found";
+        for(Movie m : myMovies) {
+            if(id.equals(m.getID())) {
+                title = m.getTitle();
+            }
+        }
+        return title;
+    }
 
+    public String getID(String title) {
+        String id = "No Such Title";
+        for(Movie m : myMovies) {
+            if(title.equals(m.getTitle())) {
+                id = m.getID();
+            }
+        }
+        return id;
+    }
     
 }

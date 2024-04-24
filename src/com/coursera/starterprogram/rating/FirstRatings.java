@@ -3,6 +3,7 @@ package com.coursera.starterprogram.rating;
 import com.coursera.starterprogram.movie.Movie;
 import com.coursera.starterprogram.rater.EfficientRater;
 import com.coursera.starterprogram.rater.PlainRater;
+import com.coursera.starterprogram.rater.Rater;
 import edu.duke.*;
 
 import java.util.*;
@@ -25,40 +26,14 @@ public class FirstRatings {
         return movies;
     }
 
-    public ArrayList<PlainRater> loadRaters(String filename) { //plainRaters
-        ArrayList<PlainRater> plainRaters = new ArrayList<>();
+    public ArrayList<Rater> loadRaters(String filename) { //Now efficient
+        ArrayList<Rater> efficientRatersList = new ArrayList<>();
         FileResource fileResource = new FileResource(filename);
         CSVParser parser = fileResource.getCSVParser();
         int index = 0;
         for(CSVRecord record : parser) {
             if(index == 0) {
-                PlainRater plainRater = new PlainRater(record.get("rater_id"));
-                plainRater.addRating(record.get("movie_id"), Double.parseDouble(record.get("rating")));
-                plainRaters.add(plainRater);
-                index++;
-            }
-            else if(plainRaters.get(index -1).getID().equals(record.get("rater_id"))) {
-                plainRaters.get(index - 1).addRating(record.get("movie_id"), Double.parseDouble(record.get("rating")));
-            }
-            else {
-                PlainRater plainRater = new PlainRater(record.get("rater_id"));
-                plainRater.addRating(record.get("movie_id"), Double.parseDouble(record.get("rating")));
-                plainRaters.add(plainRater);
-                index++;
-            }
-        }
-
-        return plainRaters;
-    }
-
-    public ArrayList<EfficientRater> loadRatersEfficient(String filename) { //EfficientRaters
-        ArrayList<EfficientRater> efficientRatersList = new ArrayList<>();
-        FileResource fileResource = new FileResource(filename);
-        CSVParser parser = fileResource.getCSVParser();
-        int index = 0;
-        for(CSVRecord record : parser) {
-            if(index == 0) {
-                EfficientRater eRater = new EfficientRater(record.get("rater_id"));
+                Rater eRater = new EfficientRater(record.get("rater_id"));
                 eRater.addRating(record.get("movie_id"), Double.parseDouble(record.get("rating")));
                 efficientRatersList.add(eRater);
                 index++;
@@ -67,7 +42,7 @@ public class FirstRatings {
                 efficientRatersList.get(index - 1).addRating(record.get("movie_id"), Double.parseDouble(record.get("rating")));
             }
             else {
-                EfficientRater eRater = new EfficientRater(record.get("rater_id"));
+                Rater eRater = new EfficientRater(record.get("rater_id"));
                 eRater.addRating(record.get("movie_id"), Double.parseDouble(record.get("rating")));
                 efficientRatersList.add(eRater);
                 index++;

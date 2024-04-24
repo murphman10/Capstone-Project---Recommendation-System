@@ -16,7 +16,7 @@ public class PlainRater implements Rater {
 
     public PlainRater(String id) {
         myID = id;
-        myRatings = new ArrayList<Rating>();
+        myRatings = new ArrayList<>();
     }
 
     public void addRating(String item, double rating) {

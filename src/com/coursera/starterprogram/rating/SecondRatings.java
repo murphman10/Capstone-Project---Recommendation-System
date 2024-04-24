@@ -8,12 +8,13 @@ package com.coursera.starterprogram.rating;
 
 import com.coursera.starterprogram.movie.Movie;
 import com.coursera.starterprogram.rater.PlainRater;
+import com.coursera.starterprogram.rater.Rater;
 
 import java.util.*;
 
 public class SecondRatings {
     private ArrayList<Movie> myMovies;
-    private ArrayList<PlainRater> myPlainRaters;
+    private ArrayList<Rater> myPlainRaters;
     
     public SecondRatings() {
         // default constructor
@@ -35,7 +36,7 @@ public class SecondRatings {
         double average = 0;
         double sum = 0;
         int countRaters = 0;
-        for(PlainRater r: myPlainRaters) {
+        for(Rater r: myPlainRaters) {
             if(r.hasRating(id)) {
                 countRaters++;
                 sum += r.getRating(id);
@@ -47,7 +48,7 @@ public class SecondRatings {
     }
 
     public ArrayList<Rating> getAverageRatings(int minimalRaters) {
-        ArrayList<Rating> ratings = new ArrayList<Rating>();
+        ArrayList<Rating> ratings = new ArrayList<>();
         for(Movie m: myMovies) {
             double averageRating = getAverageByID(m.getID(),minimalRaters);
             if(averageRating!=0){

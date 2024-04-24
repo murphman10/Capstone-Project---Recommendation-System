@@ -11,7 +11,7 @@ public class EfficientRater implements Rater {
 
     public EfficientRater(String id) {
         myID = id;
-        myRatings = new HashMap<String,Rating>();
+        myRatings = new HashMap<>();
     }
 
     public void addRating(String item, double rating) {
@@ -42,7 +42,7 @@ public class EfficientRater implements Rater {
     }
 
     public ArrayList<String> getItemsRated() {
-        ArrayList<String> list = new ArrayList<String>();
+        ArrayList<String> list = new ArrayList<>();
         for(String key : myRatings.keySet()){
             list.add(myRatings.get(key).getItem());
         }

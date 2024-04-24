@@ -7,13 +7,13 @@ package com.coursera.starterprogram.rating;
  */
 
 import com.coursera.starterprogram.movie.Movie;
-import com.coursera.starterprogram.rater.Rater;
+import com.coursera.starterprogram.rater.PlainRater;
 
 import java.util.*;
 
 public class SecondRatings {
     private ArrayList<Movie> myMovies;
-    private ArrayList<Rater> myRaters;
+    private ArrayList<PlainRater> myPlainRaters;
     
     public SecondRatings() {
         // default constructor
@@ -22,20 +22,20 @@ public class SecondRatings {
     public SecondRatings(String movieFile, String ratingsFile) {
         FirstRatings fr = new FirstRatings();
         myMovies = fr.loadMovies(movieFile);
-        myRaters = fr.loadRaters(ratingsFile);
+        myPlainRaters = fr.loadRaters(ratingsFile);
     }
     public int getMovieSize() {
         return myMovies.size();
     }
     public int getRaterSize() {
-        return myRaters.size();
+        return myPlainRaters.size();
     }
 
     private double getAverageByID(String id, int minimalRaters) {
         double average = 0;
         double sum = 0;
         int countRaters = 0;
-        for(Rater r: myRaters) {
+        for(PlainRater r: myPlainRaters) {
             if(r.hasRating(id)) {
                 countRaters++;
                 sum += r.getRating(id);

@@ -1,10 +1,10 @@
 package com.coursera.starterprogram.rating;
 
 import com.coursera.starterprogram.movie.Movie;
-import com.coursera.starterprogram.rater.Rater;
+import com.coursera.starterprogram.rater.EfficientRater;
+import com.coursera.starterprogram.rater.PlainRater;
 import edu.duke.*;
 
-import java.io.File;
 import java.util.*;
 import org.apache.commons.csv.*;
 public class FirstRatings {
@@ -25,30 +25,56 @@ public class FirstRatings {
         return movies;
     }
 
-    public ArrayList<Rater> loadRaters(String filename) {
-        ArrayList<Rater> raters = new ArrayList<>();
+    public ArrayList<PlainRater> loadRaters(String filename) { //plainRaters
+        ArrayList<PlainRater> plainRaters = new ArrayList<>();
         FileResource fileResource = new FileResource(filename);
         CSVParser parser = fileResource.getCSVParser();
         int index = 0;
         for(CSVRecord record : parser) {
             if(index == 0) {
-                Rater rater = new Rater(record.get("rater_id"));
-                rater.addRating(record.get("movie_id"), Double.parseDouble(record.get("rating")));
-                raters.add(rater);
+                PlainRater plainRater = new PlainRater(record.get("rater_id"));
+                plainRater.addRating(record.get("movie_id"), Double.parseDouble(record.get("rating")));
+                plainRaters.add(plainRater);
                 index++;
             }
-            else if(raters.get(index -1).getID().equals(record.get("rater_id"))) {
-                raters.get(index - 1).addRating(record.get("movie_id"), Double.parseDouble(record.get("rating")));
+            else if(plainRaters.get(index -1).getID().equals(record.get("rater_id"))) {
+                plainRaters.get(index - 1).addRating(record.get("movie_id"), Double.parseDouble(record.get("rating")));
             }
             else {
-                Rater rater = new Rater(record.get("rater_id"));
-                rater.addRating(record.get("movie_id"), Double.parseDouble(record.get("rating")));
-                raters.add(rater);
+                PlainRater plainRater = new PlainRater(record.get("rater_id"));
+                plainRater.addRating(record.get("movie_id"), Double.parseDouble(record.get("rating")));
+                plainRaters.add(plainRater);
                 index++;
             }
         }
 
-        return raters;
+        return plainRaters;
+    }
+
+    public ArrayList<EfficientRater> loadRatersEfficient(String filename) { //EfficientRaters
+        ArrayList<EfficientRater> efficientRatersList = new ArrayList<>();
+        FileResource fileResource = new FileResource(filename);
+        CSVParser parser = fileResource.getCSVParser();
+        int index = 0;
+        for(CSVRecord record : parser) {
+            if(index == 0) {
+                EfficientRater eRater = new EfficientRater(record.get("rater_id"));
+                eRater.addRating(record.get("movie_id"), Double.parseDouble(record.get("rating")));
+                efficientRatersList.add(eRater);
+                index++;
+            }
+            else if(efficientRatersList.get(index -1).getID().equals(record.get("rater_id"))) {
+                efficientRatersList.get(index - 1).addRating(record.get("movie_id"), Double.parseDouble(record.get("rating")));
+            }
+            else {
+                EfficientRater eRater = new EfficientRater(record.get("rater_id"));
+                eRater.addRating(record.get("movie_id"), Double.parseDouble(record.get("rating")));
+                efficientRatersList.add(eRater);
+                index++;
+            }
+        }
+
+        return efficientRatersList;
     }
 
 }

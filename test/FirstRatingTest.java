@@ -1,5 +1,6 @@
 import com.coursera.starterprogram.movie.Movie;
-import com.coursera.starterprogram.rater.Rater;
+import com.coursera.starterprogram.rater.EfficientRater;
+import com.coursera.starterprogram.rater.PlainRater;
 import com.coursera.starterprogram.rating.FirstRatings;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -58,7 +59,7 @@ public class FirstRatingTest {
 
     @Test
     public void testLoadRaters() {
-        ArrayList<Rater> result = firstRatings.loadRaters("data/ratings.csv");
+        ArrayList<PlainRater> result = firstRatings.loadRaters("data/ratings.csv");
         String raterID = "193";
         HashMap<String, Integer> map = new HashMap<String, Integer>();
         String movieID = "1798709";
@@ -67,7 +68,7 @@ public class FirstRatingTest {
 
         System.out.println("Number of ratings: " + result.size());
 
-        for(Rater r : result) {
+        for(PlainRater r : result) {
             System.out.println("ID: " + r.getID() + "," + "Ratings: " + r.numRatings());
             ArrayList<String> ratingList = r.getItemsRated();
             for(String s: ratingList) {
@@ -95,6 +96,19 @@ public class FirstRatingTest {
         }
         System.out.println("Movie ID " + movieID + " was rated by " + raterCount + " raters");
         System.out.println(set.size() + " movies have been rated by all " +  result.size() + " raters");
+    }
+
+    @Test
+    public void testLoadRatersEfficient() {
+        ArrayList<EfficientRater> result = firstRatings.loadRatersEfficient("data/ratings.csv");
+
+        System.out.println("Number of ratings: " + result.size());
+        for(EfficientRater er : result) {
+            ArrayList<String> ratingList = er.getItemsRated();
+            for(String s: ratingList) {
+                System.out.println("Movie ID " + s + " is rated as " + er.getRating(s));
+            }
+        }
     }
 
 }

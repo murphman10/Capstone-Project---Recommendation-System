@@ -1,4 +1,7 @@
-package com.coursera.starterprogram.rating;
+package com.coursera.starterprogram.runner;
+
+import com.coursera.starterprogram.rating.Rating;
+import com.coursera.starterprogram.rating.SecondRatings;
 
 import java.util.ArrayList;
 

@@ -10,8 +10,8 @@ import java.util.ArrayList;
 public class MovieRunnerWithFilters {
 
     public static void printAverageRatings() {
-        String movieFile = "ratedmovies_short.csv";
-        String ratingsFile = "data/ratings_short.csv";
+        String movieFile = "ratedmoviesfull.csv";
+        String ratingsFile = "data/ratings.csv";
 
         ThirdRatings thirdRatings = new ThirdRatings(ratingsFile);
         System.out.println("Number of raters: " + thirdRatings.getRaterSize());
@@ -19,7 +19,7 @@ public class MovieRunnerWithFilters {
         MovieDatabase.initialize(movieFile);
         System.out.println("Number of movies: " + MovieDatabase.size());
 
-        ArrayList<Rating> ratings = thirdRatings.getAverageRatings(1);
+        ArrayList<Rating> ratings = thirdRatings.getAverageRatings(35);
         System.out.println("Found " + ratings.size() + " movies:");
         for(Rating r : ratings) {
             System.out.println("Rating: " + r.getValue() + ", " + "Title: " + MovieDatabase.getTitle(r.getItem()));
@@ -28,8 +28,8 @@ public class MovieRunnerWithFilters {
     }
 
     public static void printAverageRatingsByYear() {
-        String movieFile = "ratedmovies_short.csv";
-        String ratingsFile = "data/ratings_short.csv";
+        String movieFile = "ratedmoviesfull.csv";
+        String ratingsFile = "data/ratings.csv";
 
         ThirdRatings thirdRatings = new ThirdRatings(ratingsFile);
         Filter yearFilter = new YearAfterFilter(2000);
@@ -38,7 +38,7 @@ public class MovieRunnerWithFilters {
 
         MovieDatabase.initialize(movieFile);
 
-        ArrayList<Rating> ratings = thirdRatings.getAverageRatingsByFilter(1, yearFilter);
+        ArrayList<Rating> ratings = thirdRatings.getAverageRatingsByFilter(20, yearFilter);
         System.out.println("Found " + ratings.size() + " movies:");
         for(Rating r : ratings) {
             System.out.println("Rating: " + r.getValue() + ", " + "Title: " + MovieDatabase.getTitle(r.getItem()));
@@ -47,16 +47,16 @@ public class MovieRunnerWithFilters {
     }
 
     public static void printAverageRatingsByGenre() {
-        String movieFile = "ratedmovies_short.csv";
-        String ratingsFile = "data/ratings_short.csv";
+        String movieFile = "ratedmoviesfull.csv";
+        String ratingsFile = "data/ratings.csv";
 
         MovieDatabase.initialize(movieFile);
         ThirdRatings thirdRatings = new ThirdRatings(ratingsFile);
-        Filter genreFilter = new GenreFilter("Crime");
+        Filter genreFilter = new GenreFilter("Comedy");
 
         System.out.println("Number of raters: " + thirdRatings.getRaterSize());
 
-        ArrayList<Rating> ratings = thirdRatings.getAverageRatingsByFilter(1, genreFilter);
+        ArrayList<Rating> ratings = thirdRatings.getAverageRatingsByFilter(20, genreFilter);
         System.out.println("Found " + ratings.size() + " movies:");
         for(Rating r : ratings) {
             System.out.println("Rating: " + r.getValue() + ", " + "Title: " + MovieDatabase.getTitle(r.getItem()) +
@@ -66,16 +66,16 @@ public class MovieRunnerWithFilters {
     }
 
     public static void printAverageRatingsByMinutes() {
-        String movieFile = "ratedmovies_short.csv";
-        String ratingsFile = "data/ratings_short.csv";
+        String movieFile = "ratedmoviesfull.csv";
+        String ratingsFile = "data/ratings.csv";
 
         MovieDatabase.initialize(movieFile);
         ThirdRatings thirdRatings = new ThirdRatings(ratingsFile);
-        Filter minutesFilter = new MinutesFilter(110, 170);
+        Filter minutesFilter = new MinutesFilter(105, 135);
 
         System.out.println("Number of raters: " + thirdRatings.getRaterSize());
 
-        ArrayList<Rating> ratings = thirdRatings.getAverageRatingsByFilter(1, minutesFilter);
+        ArrayList<Rating> ratings = thirdRatings.getAverageRatingsByFilter(5, minutesFilter);
         System.out.println("Found " + ratings.size() + " movies:");
         for(Rating r : ratings) {
             System.out.println("Rating: " + r.getValue() + ", " + "Title: " + MovieDatabase.getTitle(r.getItem()) +
@@ -85,16 +85,16 @@ public class MovieRunnerWithFilters {
     }
 
     public static void printAverageRatingsByDirector() {
-        String movieFile = "ratedmovies_short.csv";
-        String ratingsFile = "data/ratings_short.csv";
+        String movieFile = "ratedmoviesfull.csv";
+        String ratingsFile = "data/ratings.csv";
 
         MovieDatabase.initialize(movieFile);
         ThirdRatings thirdRatings = new ThirdRatings(ratingsFile);
-        Filter directorFilter = new DirectorsFilter("Charles Chaplin,Michael Mann,Spike Jonze");
+        Filter directorFilter = new DirectorsFilter("Clint Eastwood,Joel Coen,Martin Scorsese,Roman Polanski,Nora Ephron,Ridley Scott,Sydney Pollack");
 
         System.out.println("Number of raters: " + thirdRatings.getRaterSize());
 
-        ArrayList<Rating> ratings = thirdRatings.getAverageRatingsByFilter(1, directorFilter);
+        ArrayList<Rating> ratings = thirdRatings.getAverageRatingsByFilter(4, directorFilter);
         System.out.println("Found " + ratings.size() + " movies:");
         for(Rating r : ratings) {
             System.out.println("Rating: " + r.getValue() + ", " + "Title: " + MovieDatabase.getTitle(r.getItem()) +
@@ -103,22 +103,22 @@ public class MovieRunnerWithFilters {
     }
 
     public static void printAverageRatingsByYearAfterAndGenre() {
-        String movieFile = "ratedmovies_short.csv";
-        String ratingsFile = "data/ratings_short.csv";
+        String movieFile = "ratedmoviesfull.csv";
+        String ratingsFile = "data/ratings.csv";
 
         MovieDatabase.initialize(movieFile);
         ThirdRatings thirdRatings = new ThirdRatings(ratingsFile);
 
         AllFilters allFilters = new AllFilters();
-        Filter genreFilter = new GenreFilter("Romance");
-        Filter yearFilter = new YearAfterFilter(1980);
+        Filter genreFilter = new GenreFilter("Drama");
+        Filter yearFilter = new YearAfterFilter(1990);
 
         allFilters.addFilter(yearFilter);
         allFilters.addFilter(genreFilter);
 
         System.out.println("Number of raters: " + thirdRatings.getRaterSize());
 
-        ArrayList<Rating> ratings = thirdRatings.getAverageRatingsByFilter(1, allFilters);
+        ArrayList<Rating> ratings = thirdRatings.getAverageRatingsByFilter(8, allFilters);
         System.out.println("Found " + ratings.size() + " movies:");
         for(Rating r : ratings) {
             System.out.println("Rating: " + r.getValue() + ", " + "Title: " + MovieDatabase.getTitle(r.getItem()) +
@@ -129,22 +129,22 @@ public class MovieRunnerWithFilters {
     }
 
     public static void printAverageRatingsByDirectorsAndMinutes() {
-        String movieFile = "ratedmovies_short.csv";
-        String ratingsFile = "data/ratings_short.csv";
+        String movieFile = "ratedmoviesfull.csv";
+        String ratingsFile = "data/ratings.csv";
 
         MovieDatabase.initialize(movieFile);
         ThirdRatings thirdRatings = new ThirdRatings(ratingsFile);
 
         AllFilters allFilters = new AllFilters();
-        Filter directorFilter = new DirectorsFilter("Charles Chaplin,Michael Mann,Spike Jonze");
-        Filter minutesFilter = new MinutesFilter(110, 170);
+        Filter directorFilter = new DirectorsFilter("Clint Eastwood,Joel Coen,Tim Burton,Ron Howard,Nora Ephron,Sydney Pollack");
+        Filter minutesFilter = new MinutesFilter(90, 180);
 
         allFilters.addFilter(directorFilter);
         allFilters.addFilter(minutesFilter);
 
         System.out.println("Number of raters: " + thirdRatings.getRaterSize());
 
-        ArrayList<Rating> ratings = thirdRatings.getAverageRatingsByFilter(1, allFilters);
+        ArrayList<Rating> ratings = thirdRatings.getAverageRatingsByFilter(3, allFilters);
         System.out.println("Found " + ratings.size() + " movies:");
         for(Rating r : ratings) {
             System.out.println("Rating: " + r.getValue() + ", " + "Title: " + MovieDatabase.getTitle(r.getItem()) +

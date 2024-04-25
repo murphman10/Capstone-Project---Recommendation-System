@@ -1,7 +1,7 @@
-package com.coursera.starterprogram.runner;
+package com.coursera.capstone.runner;
 
-import com.coursera.starterprogram.rating.Rating;
-import com.coursera.starterprogram.rating.SecondRatings;
+import com.coursera.capstone.rating.Rating;
+import com.coursera.capstone.rating.SecondRatings;
 
 import java.util.ArrayList;
 

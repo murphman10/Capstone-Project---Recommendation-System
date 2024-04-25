@@ -1,5 +1,5 @@
-import com.coursera.starterprogram.rating.Rating;
-import com.coursera.starterprogram.rating.SecondRatings;
+import com.coursera.capstone.rating.Rating;
+import com.coursera.capstone.rating.SecondRatings;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 

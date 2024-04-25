@@ -1,6 +1,6 @@
-package com.coursera.starterprogram.filter;
+package com.coursera.capstone.filter;
 
-import com.coursera.starterprogram.database.MovieDatabase;
+import com.coursera.capstone.database.MovieDatabase;
 
 public class YearAfterFilter implements Filter {
 	private int myYear;

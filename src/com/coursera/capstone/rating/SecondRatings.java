@@ -1,4 +1,4 @@
-package com.coursera.starterprogram.rating;
+package com.coursera.capstone.rating;
 /**
  * Write a description of SecondRatings here.
  * 
@@ -6,9 +6,8 @@ package com.coursera.starterprogram.rating;
  * @version (a version number or a date)
  */
 
-import com.coursera.starterprogram.movie.Movie;
-import com.coursera.starterprogram.rater.PlainRater;
-import com.coursera.starterprogram.rater.Rater;
+import com.coursera.capstone.movie.Movie;
+import com.coursera.capstone.rater.Rater;
 
 import java.util.*;
 

@@ -1,6 +1,6 @@
-package com.coursera.starterprogram.rater;
+package com.coursera.capstone.rater;
 
-import com.coursera.starterprogram.rating.Rating;
+import com.coursera.capstone.rating.Rating;
 
 import java.util.ArrayList;
 import java.util.HashMap;

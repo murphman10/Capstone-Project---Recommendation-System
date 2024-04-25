@@ -1,8 +1,9 @@
-package com.coursera.starterprogram.rating;
+package com.coursera.capstone.rating;
 
-import com.coursera.starterprogram.database.MovieDatabase;
-import com.coursera.starterprogram.filter.TrueFilter;
-import com.coursera.starterprogram.rater.Rater;
+import com.coursera.capstone.database.MovieDatabase;
+import com.coursera.capstone.filter.Filter;
+import com.coursera.capstone.filter.TrueFilter;
+import com.coursera.capstone.rater.Rater;
 
 import java.util.ArrayList;
 
@@ -37,12 +38,27 @@ public class ThirdRatings {
     }
 
     public ArrayList<Rating> getAverageRatings(int minimalRaters) {
-        ArrayList<Rating> ratings = new ArrayList<>();
         ArrayList<String> movies = MovieDatabase.filterBy(new TrueFilter());
-        for(String s: movies) {
-            double averageRating = getAverageByID(s,minimalRaters);
+        ArrayList<Rating> ratings = new ArrayList<>();
+
+        for(String id: movies) {
+            double averageRating = getAverageByID(id,minimalRaters);
             if(averageRating!=0){
-                Rating r = new Rating(s, averageRating);
+                Rating r = new Rating(id, averageRating);
+                ratings.add(r);
+            }
+        }
+        return ratings;
+    }
+
+    public ArrayList<Rating> getAverageRatingsByFilter(int minimalRaters, Filter filterCriteria) {
+        ArrayList<String> movies = MovieDatabase.filterBy(filterCriteria);
+        ArrayList<Rating> ratings = new ArrayList<>();
+
+        for(String id : movies) {
+            double averageRating = getAverageByID(id, minimalRaters);
+            if(averageRating!=0){
+                Rating r = new Rating(id, averageRating);
                 ratings.add(r);
             }
         }

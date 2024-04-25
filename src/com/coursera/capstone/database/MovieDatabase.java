@@ -1,12 +1,10 @@
-package com.coursera.starterprogram.database;
+package com.coursera.capstone.database;
 
 import java.util.*;
 
-import com.coursera.starterprogram.filter.Filter;
-import com.coursera.starterprogram.movie.Movie;
-import com.coursera.starterprogram.rating.FirstRatings;
-import org.apache.commons.csv.*;
-import edu.duke.FileResource;
+import com.coursera.capstone.filter.Filter;
+import com.coursera.capstone.movie.Movie;
+import com.coursera.capstone.rating.FirstRatings;
 
 public class MovieDatabase {
     private static HashMap<String, Movie> ourMovies;

@@ -1,9 +1,8 @@
-package com.coursera.starterprogram.rating;
+package com.coursera.capstone.rating;
 
-import com.coursera.starterprogram.movie.Movie;
-import com.coursera.starterprogram.rater.EfficientRater;
-import com.coursera.starterprogram.rater.PlainRater;
-import com.coursera.starterprogram.rater.Rater;
+import com.coursera.capstone.movie.Movie;
+import com.coursera.capstone.rater.EfficientRater;
+import com.coursera.capstone.rater.Rater;
 import edu.duke.*;
 
 import java.util.*;

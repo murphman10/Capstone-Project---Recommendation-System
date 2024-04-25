@@ -1,4 +1,4 @@
-package com.coursera.starterprogram.filter;
+package com.coursera.capstone.filter;
 
 public class TrueFilter implements Filter {
 	@Override

@@ -1,4 +1,4 @@
-package com.coursera.starterprogram.rater;
+package com.coursera.capstone.rater;
 /**
  * Write a description of class Rater here.
  * 
@@ -6,7 +6,7 @@ package com.coursera.starterprogram.rater;
  * @version (a version number or a date)
  */
 
-import com.coursera.starterprogram.rating.Rating;
+import com.coursera.capstone.rating.Rating;
 
 import java.util.*;
 

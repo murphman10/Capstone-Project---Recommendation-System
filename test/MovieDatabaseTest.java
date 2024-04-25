@@ -1,9 +1,7 @@
-import com.coursera.starterprogram.database.MovieDatabase;
-import com.coursera.starterprogram.movie.Movie;
+import com.coursera.capstone.database.MovieDatabase;
+import com.coursera.capstone.movie.Movie;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-
-import java.util.HashMap;
 
 public class MovieDatabaseTest {
 
@@ -18,7 +16,7 @@ public class MovieDatabaseTest {
 
     @Test
     public void testGetMovieInfo() {
-        String id = "0068646"; //The Godfather
+        String id = "0068646";
         Movie m = MovieDatabase.getMovie(id);
         System.out.println("Movie Info: " + m.toString());
     }

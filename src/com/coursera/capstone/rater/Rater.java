@@ -1,4 +1,4 @@
-package com.coursera.starterprogram.rater;
+package com.coursera.capstone.rater;
 
 import java.util.ArrayList;
 

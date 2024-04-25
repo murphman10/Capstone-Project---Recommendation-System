@@ -1,4 +1,4 @@
-package com.coursera.starterprogram.rating;
+package com.coursera.capstone.rating;
 
 // An immutable passive data object (PDO) to represent the rating data
 public class Rating implements Comparable<Rating> {

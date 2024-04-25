@@ -1,6 +1,6 @@
-import com.coursera.starterprogram.movie.Movie;
-import com.coursera.starterprogram.rater.Rater;
-import com.coursera.starterprogram.rating.FirstRatings;
+import com.coursera.capstone.movie.Movie;
+import com.coursera.capstone.rater.Rater;
+import com.coursera.capstone.rating.FirstRatings;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 

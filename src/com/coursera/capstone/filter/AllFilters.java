@@ -1,6 +1,4 @@
-package com.coursera.starterprogram.filter;
-
-import com.coursera.starterprogram.filter.Filter;
+package com.coursera.capstone.filter;
 
 import java.util.ArrayList;
 

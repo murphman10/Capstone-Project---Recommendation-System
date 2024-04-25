@@ -1,7 +1,4 @@
-package com.coursera.starterprogram.movie;
-
-import java.util.ArrayList;
-import java.util.Arrays;
+package com.coursera.capstone.movie;
 
 // An immutable passive data object (PDO) to represent item data
 public class Movie {

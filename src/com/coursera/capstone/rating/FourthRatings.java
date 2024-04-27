@@ -52,12 +52,63 @@ public class FourthRatings {
         return average;
     }
 
-//    public ArrayList<Rating> getSimilarRatings(String id, int numSimilarRatings, int minimalRaters) {
-//        ArrayList<Rating> similarRatings = new ArrayList<>();
-//
-//
-//        return similarRatings;
-//    }
+    public ArrayList<Rating> getSimilarRatings(String id, int numSimilarRatings, int minimalRaters) {
+        ArrayList<Rating> similarRatings = new ArrayList<>();
+        ArrayList<Rating> list = getSimilarities(id);
+        ArrayList<String> movies = MovieDatabase.filterBy(new TrueFilter());
+
+        for(String m : movies) {
+            double weightedAvg = 0.0;
+            double sum = 0.0;
+            int numRaters = 0;
+            for(int i = 0; i < numSimilarRatings; i++) {
+                Rating r = list.get(i);
+                String rID = r.getItem();
+                double weight = r.getValue();
+                Rater rater = RaterDatabase.getRater(rID);
+                if(rater.hasRating(m)) {
+                    numRaters++;
+                    sum += weight * rater.getRating(m);
+                }
+            }
+            if(numRaters >= minimalRaters) {
+                weightedAvg = sum / numRaters;
+                similarRatings.add(new Rating(m,weightedAvg));
+            }
+        }
+        Collections.sort(similarRatings, Collections.reverseOrder());
+
+        return similarRatings;
+    }
+
+    public ArrayList<Rating> getSimilarRatingsByFilter(String id, int numSimilarRatings, int minimalRaters, Filter f) {
+        ArrayList<Rating> similarRatings = new ArrayList<>();
+        ArrayList<Rating> list = getSimilarities(id);
+        ArrayList<String> movies = MovieDatabase.filterBy(f);
+
+        for(String m : movies) {
+            double weightedAvg = 0.0;
+            double sum = 0.0;
+            int numRaters = 0;
+            for(int i = 0; i < numSimilarRatings; i++) {
+                Rating r = list.get(i);
+                String rID = r.getItem();
+                double weight = r.getValue();
+                Rater rater = RaterDatabase.getRater(rID);
+                if(rater.hasRating(m)) {
+                    numRaters++;
+                    sum += weight * rater.getRating(m);
+                }
+            }
+            if(numRaters >= minimalRaters) {
+                weightedAvg = sum / numRaters;
+                similarRatings.add(new Rating(m,weightedAvg));
+            }
+        }
+        Collections.sort(similarRatings, Collections.reverseOrder());
+
+        return similarRatings;
+    }
 
     public ArrayList<Rating> getAverageRatings(int minimalRaters) {
         ArrayList<String> movies = MovieDatabase.filterBy(new TrueFilter());

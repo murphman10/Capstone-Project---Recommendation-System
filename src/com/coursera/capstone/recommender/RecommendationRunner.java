@@ -25,7 +25,7 @@ public class RecommendationRunner implements Recommender{
         ArrayList<String> selectedMovieIds = new ArrayList<>();
         int numOfMovie = 0 ;
         Random rand = new Random();
-        while (numOfMovie < 30) {
+        while (numOfMovie < 10) {
             int selectedMovieIdIndex = rand.nextInt(movieIds.size());
             String selectedMovieId = movieIds.get(selectedMovieIdIndex);
             selectedMovieIds.add(selectedMovieId);

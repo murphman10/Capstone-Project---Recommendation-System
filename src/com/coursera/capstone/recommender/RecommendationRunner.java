@@ -89,7 +89,7 @@ public class RecommendationRunner implements Recommender{
                     <span >&spades;</span>
                     """;
             String star = "" ;
-            for (int i = 0; i < 11 ; i++) {
+            for (int i = 0; i < 10; i++) {
                 if (i < movieWA) {
                     star += checkedStar;
                 } else {

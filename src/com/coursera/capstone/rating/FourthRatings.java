@@ -63,8 +63,9 @@ public class FourthRatings {
             int numRaters = 0;
             for(int i = 0; i < numSimilarRatings; i++) {
                 Rating r = list.get(i);
-                String rID = r.getItem();
                 double weight = r.getValue();
+                String rID = r.getItem();
+
                 Rater rater = RaterDatabase.getRater(rID);
                 if(rater.hasRating(m)) {
                     numRaters++;

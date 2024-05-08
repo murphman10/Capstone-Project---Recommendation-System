@@ -1,5 +1,10 @@
 package com.coursera.capstone.rating;
-
+/**
+ * Ratings class
+ *
+ * @author Davide Nastri
+ * @version 13/09/2018
+ */
 
 import com.coursera.capstone.database.MovieDatabase;
 import com.coursera.capstone.database.RaterDatabase;
